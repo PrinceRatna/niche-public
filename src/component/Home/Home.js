@@ -11,12 +11,13 @@ import { Container, Grid } from '@mui/material';
 import { height, styled, width } from '@mui/system';
 import { Height } from '@mui/icons-material';
 import Products from '../Products/Products';
+import useAuth from '../hooks/useAuth';
 
 
-// a header (simple navbar), banner, products, reviews, and footer.
+// a header (simple navbar), banner, products, reviews, and (footer).
 // the products will have a maximum of 6 items/products
 // Each product should have a relevant name, image, short description, add a purchase or buy now button. If a user clicks on the purchase or buy now button it will take the user to the purchase page. 
-// Add one extra section
+// (Add one extra section)
 // We will have another page on the top navigation bar (header) mentioning `explore` 
 // Clicking on the link will take the user to the explore page. On this page, users will see all the products you have. This means, the user will see at least 10 products on this page. Each item will have a name, description, image, price and button. Once a user clicks on this button, it will take the user to the `purchase` page.
 // The `purchase`page will be a private/protected route
@@ -134,8 +135,8 @@ const products= [{
 
 
 
-
 const Home = () => {
+
     return (
         <div>
           {/*--------------- Nav bar -----------------*/}
@@ -154,16 +155,20 @@ const Home = () => {
          SOME SPECIAL PRODUCTS
         </Typography>
               <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-              {products.map((product, index) => (
-              <Grid item xs={2} sm={4} md={4} key={index}>
-                <Products 
-                product={product}
-                key={product.title}
-                ></Products>
-              </Grid>
-               ))}
+              {products.map((product, index)=> {
+                if(index<6){
+                  return <Grid item xs={2} sm={4} md={4} key={index}>
+                  <Products 
+                  product={product}
+                  key={product.title}
+                  ></Products></Grid>
+                }
+             
+              
+           })}
               </Grid>
               </Container>
+
       
       </div>
     );

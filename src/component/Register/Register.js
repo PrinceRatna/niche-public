@@ -12,7 +12,7 @@ import TextField from '@mui/material/TextField';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { Alert, Button, CircularProgress, Container, Typography } from '@mui/material';
-import { NavLink } from 'react-router-dom';
+import { NavLink,useHistory } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 
 
@@ -20,8 +20,9 @@ const Register = () => {
   const{user,registerUser,isLoading,error}=useAuth();
 
   const [loginData,setLoginData]=useState({});
+  const history=useHistory();
 
-  const handleOnChange=e=>{
+  const handleOnBlur=e=>{
     const field=e.target.name;
     const value=e.target.value;
    //  console.log(field,value)
@@ -37,7 +38,7 @@ const Register = () => {
        alert('Password did not match')
        return
      }
-     registerUser(loginData.email,loginData.password);
+     registerUser(loginData.email,loginData.password,loginData.name, history);
      e.preventDefault();
    }
 
@@ -57,10 +58,18 @@ const Register = () => {
     <TextField
      sx={{width: '75%',m:1}}
       id="standard-basic"
+      label="Enter Your Name"
+      name="name"
+      // type="email"
+      onBlur={handleOnBlur}
+      variant="standard" />
+    <TextField
+     sx={{width: '75%',m:1}}
+      id="standard-basic"
       label="Your E-mail"
       name="email"
       type="email"
-      onBlur={handleOnChange}
+      onBlur={handleOnBlur}
       variant="standard" />
 
 
@@ -69,7 +78,7 @@ const Register = () => {
           id="filled-password-input"
           label="Your Password"
           name="password"
-          onBlur={handleOnChange}
+          onBlur={handleOnBlur}
           type="password"
           autoComplete="current-password"
           variant="standard"
@@ -79,7 +88,7 @@ const Register = () => {
           id="filled-password-input"
           label="Re-type Your Password"
           name="password2"
-          onBlur={handleOnChange}
+          onBlur={handleOnBlur}
           type="password"
           autoComplete="current-password"
           variant="standard"

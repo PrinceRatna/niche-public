@@ -12,7 +12,7 @@ const LogIn = () => {
   const location =useLocation();
   const history=useHistory();
 
-   const handleOnChange=e=>{
+   const handleOnBlur=e=>{
      const field=e.target.name;
      const value=e.target.value;
     //  console.log(field,value)
@@ -46,7 +46,7 @@ const LogIn = () => {
       label="Your E-mail"
       name="email"
       type="email"
-      onBlur={handleOnChange}
+      onBlur={handleOnBlur}
       variant="standard" />
 
 
@@ -55,7 +55,7 @@ const LogIn = () => {
           id="filled-password-input"
           label="Your Password"
           name="password"
-          onBlur={handleOnChange}
+          onBlur={handleOnBlur}
           type="password"
           autoComplete="current-password"
           variant="standard"
