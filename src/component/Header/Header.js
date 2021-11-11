@@ -4,8 +4,10 @@ import React from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 
 import { NavLink } from 'react-router-dom';
+import useAuth from '../hooks/useAuth';
 
 const Header = () => {
+  const {user,logOut}=useAuth();
     return (
         <div>
 
@@ -33,8 +35,17 @@ const Header = () => {
             
             
 
-            <NavLink to="/log" style={{color:'white',textDecoration:'none'}}><Button color="inherit">Login</Button> 
-            </NavLink>
+           
+
+            {
+              user?.email?
+              <Button onClick={logOut} color="inherit">logOut</Button> 
+              :
+               <NavLink to="/log" style={{color:'white',textDecoration:'none'}}><Button color="inherit">Login</Button> 
+               </NavLink>
+   
+  
+            }
           </Toolbar>
           
         </AppBar>

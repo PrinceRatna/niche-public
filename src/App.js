@@ -13,10 +13,14 @@ import Purchase from './component/Purchase/Purchase';
 import { Login } from '@mui/icons-material';
 import LogIn from './component/LogIn/LogIn';
 import Register from './component/Register/Register';
+import AuthProvider from './contexts/AuthProvider/AuthProvider';
+import PrivateRoute from './component/PrivateRoute/PrivateRoute';
+import Explore from './component/Explore/Explore';
 
 function App() {
   return (
     <div >
+  <AuthProvider>
     <Router>
       
        <Header></Header>
@@ -29,9 +33,12 @@ function App() {
           <Route path="/users">
             <User></User>
           </Route>
-          <Route path="/purchase">
+          <PrivateRoute path="/purchase">
             <Purchase></Purchase>
-          </Route>
+          </PrivateRoute>
+          <PrivateRoute path="/explore">
+            <Explore></Explore>
+          </PrivateRoute>
           <Route path="/log">
             <LogIn></LogIn>
           </Route>
@@ -45,7 +52,7 @@ function App() {
       
     </Router>
  
-  
+  </AuthProvider>
     </div>
   );
 }

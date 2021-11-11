@@ -11,11 +11,13 @@ import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import { Button, Container, Typography } from '@mui/material';
+import { Alert, Button, CircularProgress, Container, Typography } from '@mui/material';
 import { NavLink } from 'react-router-dom';
+import useAuth from '../hooks/useAuth';
 
 
 const Register = () => {
+  const{user,registerUser,isLoading,error}=useAuth();
 
   const [loginData,setLoginData]=useState({});
 
@@ -35,6 +37,7 @@ const Register = () => {
        alert('Password did not match')
        return
      }
+     registerUser(loginData.email,loginData.password);
      e.preventDefault();
    }
 
@@ -42,7 +45,7 @@ const Register = () => {
 
 
     return (
-        <Container>
+        <Container sx={{ textAlign: 'center'}}>
            <Typography  sx={{ textAlign: 'center',m: 2,p:2, fontWeight: 'bold'}} gutterBottom variant="h5" component="div">
          SIGN UP
         </Typography>
@@ -50,7 +53,7 @@ const Register = () => {
 
 
 
-        <form onSubmit={handleLogInSubmit}>
+      {!isLoading&&<form onSubmit={handleLogInSubmit}>
     <TextField
      sx={{width: '75%',m:1}}
       id="standard-basic"
@@ -89,8 +92,20 @@ const Register = () => {
         >Sign Up</Button>
 
 
-    </form>
+    </form>}
+    {
+      isLoading&&<CircularProgress />
 
+    }
+ {
+   user.email&&<Alert severity="success">SuccessFully Added.</Alert>
+
+
+ }
+ {
+   error&&<Alert severity="error">{error}</Alert>
+
+ }
 
 
 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>

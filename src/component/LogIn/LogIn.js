@@ -1,9 +1,16 @@
-import { Button, Container, Grid, TextField, Typography } from '@mui/material';
+import { Alert, Button, CircularProgress, Container, Grid, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink,useLocation,useHistory } from 'react-router-dom';
+import useAuth from '../hooks/useAuth';
 
 const LogIn = () => {
+ 
+  
+  const{loginUser,isLoading,user,error}=useAuth();
+
   const [loginData,setLoginData]=useState({});
+  const location =useLocation();
+  const history=useHistory();
 
    const handleOnChange=e=>{
      const field=e.target.name;
@@ -17,12 +24,13 @@ const LogIn = () => {
    }
 
     const handleLogInSubmit=e=>{
+      loginUser(loginData?.email,loginData?.password,location,history)
       e.preventDefault();
     }
 
 
     return (
-        <Container>
+        <Container sx={{ textAlign: 'center'}}>
          <Typography  sx={{ textAlign: 'center',m: 2,p:2, fontWeight: 'bold'}} gutterBottom variant="h5" component="div">
          SIGN IN
         </Typography>
@@ -31,7 +39,7 @@ const LogIn = () => {
 
 
 
-    <form onSubmit={handleLogInSubmit}>
+  {!isLoading&&<form onSubmit={handleLogInSubmit}>
     <TextField
      sx={{width: '75%',m:1}}
       id="standard-basic"
@@ -60,8 +68,19 @@ const LogIn = () => {
         >Login</Button>
 
 
-    </form>
+    </form>}
+    {
+      isLoading&&<CircularProgress />
+    }
+   {
+   user.email&&<Alert severity="success">SuccessFully Logged In.</Alert>
 
+
+ }
+ {
+   error&&<Alert severity="error">{error}</Alert>
+
+ }
 
 
 
