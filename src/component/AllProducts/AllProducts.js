@@ -3,7 +3,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const AllProducts = (props) => {
-    const {url,title,description,price}=props.product;
+    const {_id,url,title,description,price}=props.product;
 
     return (
         <Card sx={{ maxWidth: 345 }}>
@@ -25,7 +25,7 @@ const AllProducts = (props) => {
         </Typography>
       </CardContent>
       <CardActions>
-      <NavLink to="/purchase"><Button size="small">purchase</Button>
+      <NavLink to={`/purchase/${_id}`}><Button size="small">purchase</Button>
 </NavLink>
 
         <Button size="small">Learn More</Button>

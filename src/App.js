@@ -16,6 +16,9 @@ import Register from './component/Register/Register';
 import AuthProvider from './contexts/AuthProvider/AuthProvider';
 import PrivateRoute from './component/PrivateRoute/PrivateRoute';
 import Explore from './component/Explore/Explore';
+import Dashboard from './component/DashBoard/DashBoard';
+import Pay from './component/Pay/Pay';
+import MyOrders from './component/MyOrders/MyOrders';
 
 function App() {
   return (
@@ -33,8 +36,17 @@ function App() {
           <Route path="/users">
             <User></User>
           </Route>
-          <PrivateRoute path="/purchase">
+          <PrivateRoute path="/purchase/:id">
             <Purchase></Purchase>
+          </PrivateRoute>
+          <PrivateRoute path="/dashboard">
+            <Dashboard></Dashboard>
+          </PrivateRoute>
+          <PrivateRoute path="/myOrders">
+            <MyOrders></MyOrders>
+          </PrivateRoute>
+          <PrivateRoute path="/pay">
+            <Pay></Pay>
           </PrivateRoute>
           <Route path="/explore">
             <Explore></Explore>

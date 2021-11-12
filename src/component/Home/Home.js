@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import banner from '../../images/car-5.jpg';
 
 import AppBar from '@mui/material/AppBar';
@@ -15,127 +15,29 @@ import useAuth from '../hooks/useAuth';
 
 
 // a header (simple navbar), banner, products, reviews, and (footer).
-// the products will have a maximum of 6 items/products
+// the products will have a maximum of 6 items/product
 // Each product should have a relevant name, image, short description, add a purchase or buy now button. If a user clicks on the purchase or buy now button it will take the user to the purchase page. 
 // (Add one extra section)
 // We will have another page on the top navigation bar (header) mentioning `explore` 
 // Clicking on the link will take the user to the explore page. On this page, users will see all the products you have. This means, the user will see at least 10 products on this page. Each item will have a name, description, image, price and button. Once a user clicks on this button, it will take the user to the `purchase` page.
 // The `purchase`page will be a private/protected route
 
+// The purchase page should display detailed information of the item the user has clicked somewhere at the top. It will also display the user's name and email address from the login system and the user will have a field to provide address, phone number and necessary information to place the order or to complete the purchase.
+
+// . If a user is logged in, he/she will see another option on the header is called `Dashboard` and inside that dashboard a normal user (not an admin) will see options like `pay`,`My Orders`, `Review`, `Logout`. Based on your website idea, you can change the name of these menu items. The `pay` page will say: Payment system coming soon. 
+
+// On the my orders page, the logged in user will see only his/her orders. If the user wants, he/she should be able to cancel/delete any order. Ask a confirmation message before deleting or canceling an item. Using browser confirmation dialog is ok.
 
 // -------------------*******--------------------//
 
-const products= [{
- 
-  "title": "accusamus beatae ad facilis cum similique qui sunt",
-  "url": "https://via.placeholder.com/600/92c952",
-  "description":"lopokkojpoujpio iop iuio uy7 uitty iouyoi8 oiyuio iouoi",
-  "price":"909"
-  
-},
-{
-
-  "title": "reprehenderit est deserunt velit ipsam",
-  "url": "https://via.placeholder.com/600/771796",
-  "description":"lopokkojpoujpio iop iuio uy7 uitty iouyoi8 oiyuio iouoi",
-  "price":"496"
-
-  
-},
-{
- 
-  "title": "officia porro iure quia iusto qui ipsa ut modi",
-  "url": "https://via.placeholder.com/600/24f355",
-  "description":"lopokkojpoujpio iop iuio uy7 uitty iouyoi8 oiyuio iouoi",
-  "price":"904"
-
- 
-},
-{
-  
-  "title": "culpa odio esse rerum omnis laboriosam voluptate repudiandae",
-  "url": "https://via.placeholder.com/600/d32776",
-  "description":"lopokkojpoujpio iop iuio uy7 uitty iouyoi8 oiyuio iouoi",
-  "price":"678"
-
-  
-},
-{
-  
-  "title": "natus nisi omnis corporis facere molestiae rerum in",
-  "url": "https://via.placeholder.com/600/f66b97",
-  "description":"lopokkojpoujpio iop iuio uy7 uitty iouyoi8 oiyuio iouoi",
-  "price":"976"
-
- 
-},
-{
-  
-  "title": "accusamus ea aliquid et amet sequi nemo",
-  "url": "https://via.placeholder.com/600/56a8c2",
-  "description":"lopokkojpoujpio iop iuio uy7 uitty iouyoi8 oiyuio iouoi",
-  "price":"888"
-
-},
-{
- 
-  "title": "officia delectus consequatur vero aut veniam explicabo molestias",
-  "url": "https://via.placeholder.com/600/b0f7cc",
-  "description":"lopokkojpoujpio iop iuio uy7 uitty iouyoi8 oiyuio iouoi",
-  "price":"340"
-
- 
-},
-{
- 
-  "title": "aut porro officiis laborum odit ea laudantium corporis",
-  "url": "https://via.placeholder.com/600/54176f",
-  "description":"lopokkojpoujpio iop iuio uy7 uitty iouyoi8 oiyuio iouoi",
-  "price":"680"
-
- 
-},
-{
-  
-  "title": "qui eius qui autem sed",
-  "url": "https://via.placeholder.com/600/51aa97",
-  "description":"lopokkojpoujpio iop iuio uy7 uitty iouyoi8 oiyuio iouoi",
-  "price":"435"
-
-  
-},
-{
- 
-  "title": "beatae et provident et ut vel",
-  "url": "https://via.placeholder.com/600/810b14",
-  "description":"lopokkojpoujpio iop iuio uy7 uitty iouyoi8 oiyuio iouoi",
-  "price":"555"
-
-  
-},
-{
-  
-  "title": "nihil at amet non hic quia qui",
-  "url": "https://via.placeholder.com/600/1ee8a4",
-  "description":"lopokkojpoujpio iop iuio uy7 uitty iouyoi8 oiyuio iouoi",
-  "price":"432"
-  
- 
-},
-{
-  
-  "title": "mollitia soluta ut rerum eos aliquam consequatur perspiciatis maiores",
-  "url": "https://via.placeholder.com/600/66b7d2",
-  "description":"lopokkojpoujpio iop iuio uy7 uitty iouyoi8 oiyuio iouoi",
-    
-  "price":"434"
-  
-  }
-]
-
-
 
 const Home = () => {
+  const [carDetails,setCarDetails]=useState([]);
+  useEffect(()=>{
+      fetch('http://localhost:5000/explores')
+      .then(res=>res.json())
+      .then(data=>setCarDetails(data));
+  },[]);
 
     return (
         <div>
@@ -155,7 +57,7 @@ const Home = () => {
          SOME SPECIAL PRODUCTS
         </Typography>
               <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-              {products.map((product, index)=> {
+              {carDetails.map((product, index)=> {
                 if(index<6){
                   return <Grid item xs={2} sm={4} md={4} key={index}>
                   <Products 
