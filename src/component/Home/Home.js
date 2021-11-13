@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import banner from '../../images/car-5.jpg';
+import banner from '../../images/carr.jpg';
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -7,22 +7,12 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import { Container, Grid, Paper } from '@mui/material';
+import { Container, Grid, Paper, Rating } from '@mui/material';
 import { height, styled, width } from '@mui/system';
 import { Height } from '@mui/icons-material';
 import Products from '../Products/Products';
 import useAuth from '../hooks/useAuth';
 
-
-
-
-
-// . If a user is logged in, he/she will see another option on the header is called `Dashboard` and inside that dashboard a normal user (not an admin) will see options like `pay`,`My Orders`, `Review`, `Logout`. Based on your website idea, you can change the name of these menu items. The `pay` page will say: Payment system coming soon. 
-
-// On the my orders page, the logged in user will see only his/her orders. If the user wants, he/she should be able to cancel/delete any order. Ask a confirmation message before deleting or canceling an item. Using browser confirmation dialog is ok.
-
-
-// On the Review page, users should be able to add a review and that review will appear on the home age. Right now you will see every review on the home page. There is no limit on the numbers of reviews or the order of the review.
 
 // If an admin logs in, he/she will not see the options that a normal user sees. Insted an admin will see `Manage All Orders`, `Add A Product`, `Make Admin`, `Manage Products` `Logout`. Based on your website idea, you can change the name of these menu items. Details about Manage all orders or Manage products will be provided later.
 
@@ -32,6 +22,7 @@ import useAuth from '../hooks/useAuth';
 const Home = () => {
   const [carDetails,setCarDetails]=useState([]);
   const [reviews,setReviews]=useState([]);
+  
   useEffect(()=>{
       fetch('https://obscure-peak-03535.herokuapp.com/explores')
       .then(res=>res.json())
@@ -45,14 +36,12 @@ const Home = () => {
 
     return (
         <div>
-          {/*--------------- Nav bar -----------------*/}
-       
           
-      
+              {/* <img  style={{width:'100%'}} src={banner} alt=''/> */}
 
-      {/*------------ banner --------------*/}
-      
-              <img  style={{width:'100%'}} src={banner} alt=''/>
+           <div style={{backgroundImage:`url(${banner})`,height:'500px', backgroundRepeat:'no-repeat'}}><h1 style={{fontSize:'50px',textAlign:'center' ,color:'red'}}>Welcome To Our Carsist Website</h1></div>
+
+              
 
               {/*--------------- products -------------*/}
                 
@@ -120,7 +109,14 @@ const Home = () => {
                <Paper  sx={{height:1,p:2}} style={{minHeight:"50px"}} elevation={3} >
                      {
                        review.review
+                  
+
+                       
                      }
+
+                    <div style={{marginTop:'5px'}}> <span style={{color:'red',fontWeight:'40px'}}>Rating</span> <br/> 
+                   <Rating  value={parseInt(review?.rating)} readOnly />
+                        </div>
                  </Paper>
              </Grid>
               ))}
@@ -131,7 +127,7 @@ const Home = () => {
 
 
 
-
+         
 
 
 

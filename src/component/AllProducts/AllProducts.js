@@ -26,10 +26,10 @@ const AllProducts = (props) => {
         </Typography>
       </CardContent>
       <CardActions>
-      <NavLink to={`/purchase/${_id}`}><Button size="small">purchase</Button>
+      <NavLink to={`/purchase/${_id}`}><Button  size="small">purchase</Button>
 </NavLink>
 
-        <Button size="small">Learn More</Button>
+      
       </CardActions>
     </Card>
     );

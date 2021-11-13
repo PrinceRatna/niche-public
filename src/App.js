@@ -23,6 +23,7 @@ import AddReview from './component/AddReview/AddReview';
 import AddAdmin from './component/AddAdmin/AddAdmin';
 import AddProducts from './component/AddProducts/AddProducts';
 import Footer from './component/Footer/Footer';
+import AllOrders from './component/AllOrders/AllOrders';
 
 function App() {
   return (
@@ -58,6 +59,9 @@ function App() {
           <Route path="/addProducts">
             <AddProducts></AddProducts>
           </Route>
+          <PrivateRoute path="/allOrders">
+            <AllOrders></AllOrders>
+            </PrivateRoute>
           <PrivateRoute path="/pay">
             <Pay></Pay>
           </PrivateRoute>

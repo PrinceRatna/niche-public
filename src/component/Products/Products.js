@@ -38,7 +38,7 @@ const Products = (props) => {
       <NavLink to={`/purchase/${_id}`}><Button  size="small">purchase</Button>
 </NavLink>
 
-        <Button size="small">Learn More</Button>
+      
       </CardActions>
     </Card>
     );

@@ -8,15 +8,7 @@ import useAuth from '../hooks/useAuth';
 
 const Header = () => {
   const {user,logOut,admin,isLoading}=useAuth();
-  // const [state,setState]=useState(false);
-  // const {admins}=useAuth();
-  // let state=(x)=>{
-
-  //   return x;
-  // }
-
-  // console.log(admins);
-    // let op=admins.toArray().find(admin=>admin?.email===user?.email)
+  
   
     return (
         <div>  
@@ -38,6 +30,10 @@ const Header = () => {
             </Typography>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <NavLink to="/explore" style={{color:'white',textDecoration:'none'}}>Explore</NavLink>
+            </Typography>
+
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            <NavLink to="/allOrders" style={{color:'white',textDecoration:'none'}}>All Orders</NavLink>
             </Typography>
 
             {

@@ -1,4 +1,4 @@
-import { Typography,TextareaAutosize, Button } from '@mui/material';
+import { Typography,TextareaAutosize, Button, TextField } from '@mui/material';
 import React, { useState } from 'react';
 
 const AddReview = () => {
@@ -61,6 +61,14 @@ const AddReview = () => {
   placeholder="Add Review"
   style={{ width:'75%' }}
 />
+
+<TextField
+     sx={{width: '75%',m:1}}
+      id="standard-basic"
+      label="Give Rating Number Between 0-5 "
+      name="rating"
+      onBlur={handleOnBlur}
+      variant="standard" />
 
  <br/>
 

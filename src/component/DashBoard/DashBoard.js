@@ -29,29 +29,6 @@ const DashBoard = () => {
  </Paper>
 
 
-
-
-            {/* <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-          <Grid item xs={2} sm={4} md={4} >
-          <Paper elevation={3} >My Orders </Paper>
-          </Grid>
-          <Grid item xs={2} sm={4} md={4} >
-          <Paper elevation={3} > <NavLink to="/pay"style={{textDecoration:'none'}}>Payment</NavLink>
-</Paper>
-
-          </Grid>
-          <Grid item xs={2} sm={4} md={4} >
-          <Paper elevation={3} >Review </Paper>
-
-          </Grid>
-          <Grid item xs={2} sm={4} md={4} >
-          <Paper elevation={3}><Button onClick={logOut} color="inherit">logOut</Button> 
-</Paper>
-
-          </Grid>
-      </Grid> */}
-    {/* </Box> */}
         </div>
     );
 };
