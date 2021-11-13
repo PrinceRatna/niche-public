@@ -32,9 +32,10 @@ const Header = () => {
             <NavLink to="/explore" style={{color:'white',textDecoration:'none'}}>Explore</NavLink>
             </Typography>
 
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+           {admin&&<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <NavLink to="/allOrders" style={{color:'white',textDecoration:'none'}}>All Orders</NavLink>
             </Typography>
+          }
 
             {
            admin&&<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
