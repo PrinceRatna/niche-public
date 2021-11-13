@@ -24,6 +24,7 @@ import AddAdmin from './component/AddAdmin/AddAdmin';
 import AddProducts from './component/AddProducts/AddProducts';
 import Footer from './component/Footer/Footer';
 import AllOrders from './component/AllOrders/AllOrders';
+import ManageProducts from './component/ManageProducts/ManageProducts';
 
 function App() {
   return (
@@ -67,6 +68,9 @@ function App() {
           </PrivateRoute>
           <Route path="/explore">
             <Explore></Explore>
+          </Route>
+          <Route path="/manageProducts">
+            <ManageProducts></ManageProducts>
           </Route>
           <Route path="/log">
             <LogIn></LogIn>

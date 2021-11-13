@@ -36,6 +36,10 @@ const Header = () => {
             <NavLink to="/allOrders" style={{color:'white',textDecoration:'none'}}>All Orders</NavLink>
             </Typography>
           }
+           {admin&&<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            <NavLink to="/manageProducts" style={{color:'white',textDecoration:'none'}}>Manage Products</NavLink>
+            </Typography>
+          }
 
             {
            admin&&<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
