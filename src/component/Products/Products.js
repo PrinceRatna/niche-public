@@ -9,13 +9,14 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { NavLink } from 'react-router-dom';
+import { yellow } from '@mui/material/colors';
 
-
+// sx={{ maxWidth: 345, }}
 const Products = (props) => {
     const {_id,url,title,description,price}=props.product;
-    console.log(props.product)
+    // console.log(props.product)
     return (
-        <Card sx={{ maxWidth: 345 }}>
+        <Card  sx={{height:1,p:1,m:1}} >
       <CardMedia
         component="img"
         alt=""

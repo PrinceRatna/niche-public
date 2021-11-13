@@ -10,6 +10,19 @@ const useFirebase=()=>{
  const [error,setError]=useState('');
 const auth = getAuth();
 
+// ------------------admin-------------
+const [admins,setAdmins]=useState([]);
+  useEffect(()=>{
+      fetch('http://localhost:5000/addAdmin')
+      .then(res=>res.json())
+      .then(data=>setAdmins(data));
+  },[]);
+
+
+
+
+
+
 
 // ----------register---------
 const registerUser=(email,password,name,history)=>{
@@ -95,13 +108,17 @@ return ()=>unsubscribe;
 },[])
 
 
+
+    // console.log(admins[0]?.email, admins[0]?.password)
+
     return{
         user,
         registerUser,
         logOut,
         loginUser,
         isLoading,
-        error
+        error,
+        admins
     }
 
 

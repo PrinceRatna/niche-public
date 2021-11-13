@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import useAuth from '../hooks/useAuth';
 
@@ -40,10 +41,13 @@ const MyOrders = () => {
 
 
     return (
-        <div>
-            {
+        <div style={{textAlign:'center'}}>
+             <Typography variant="h5">
+          Welcome To Order Page
+        </Typography>
+            {/* {
                 console.log(orders)
-            }
+            } */}
             
             <ul>
            {

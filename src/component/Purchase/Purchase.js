@@ -31,9 +31,9 @@ import { flexbox } from '@mui/system';
 const Purchase = () => {
     const {user}=useAuth();
     const email=user.email;
-    console.log(user)
+    // console.log(user)
     const {id}=useParams();
-    console.log(id)
+    // console.log(id)
         const [purcaseCarDetail,setPurcaseCarDetail]=useState({});
         useEffect(()=>{
             const url=`http://localhost:5000/singleCarDetail/${id}`
@@ -53,7 +53,8 @@ const Purchase = () => {
            const newLoginData={...loginData};
            newLoginData[field]=value;
            console.log({...newLoginData,email});
-           setLoginData({...newLoginData,email,title:purcaseCarDetail.title  
+           setLoginData({...newLoginData,email,title:purcaseCarDetail.title ,
+            description:purcaseCarDetail.description 
            });
         
           
@@ -61,7 +62,7 @@ const Purchase = () => {
           // console.log(loginData);
 
           const handleLogInSubmit=e=>{
-            console.log(loginData);
+            // console.log(loginData);
 
             fetch('http://localhost:5000/addOrders',{
             method:'POST',

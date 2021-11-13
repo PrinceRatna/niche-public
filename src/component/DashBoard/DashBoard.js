@@ -22,7 +22,7 @@ const DashBoard = () => {
         <li style={{padding:'5px'}}> <NavLink to="/pay"style={{textDecoration:'none',color:'black'}}>Payment</NavLink></li>
         <hr/>
 
-        <li style={{padding:'5px'}}>Review</li><hr/>
+        <li style={{padding:'5px'}}><NavLink to="/addReview"style={{textDecoration:'none',color:'black'}}>Review</NavLink></li><hr/>
     
         <li style={{padding:'5px'}}><Button onClick={logOut} color="inherit">logOut</Button> </li>
     </ul>

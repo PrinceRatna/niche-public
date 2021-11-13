@@ -19,6 +19,10 @@ import Explore from './component/Explore/Explore';
 import Dashboard from './component/DashBoard/DashBoard';
 import Pay from './component/Pay/Pay';
 import MyOrders from './component/MyOrders/MyOrders';
+import AddReview from './component/AddReview/AddReview';
+import AddAdmin from './component/AddAdmin/AddAdmin';
+import AddProducts from './component/AddProducts/AddProducts';
+import Footer from './component/Footer/Footer';
 
 function App() {
   return (
@@ -45,6 +49,15 @@ function App() {
           <PrivateRoute path="/myOrders">
             <MyOrders></MyOrders>
           </PrivateRoute>
+          <PrivateRoute path="/addReview">
+            <AddReview></AddReview>
+          </PrivateRoute>
+          <Route path="/admin">
+            <AddAdmin></AddAdmin>
+          </Route>
+          <Route path="/addProducts">
+            <AddProducts></AddProducts>
+          </Route>
           <PrivateRoute path="/pay">
             <Pay></Pay>
           </PrivateRoute>
@@ -61,6 +74,7 @@ function App() {
             <Home />
           </Route>
         </Switch>
+        <Footer></Footer>
       
     </Router>
  

@@ -1,19 +1,25 @@
 import { AppBar, Button, Container, IconButton, Toolbar, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import React from 'react';
+import React, { useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 
 import { NavLink } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 
 const Header = () => {
-  const {user,logOut}=useAuth();
+  const {user,logOut,admins,isLoading}=useAuth();
+  // const [state,setState]=useState(false);
+  // const {admins}=useAuth();
+  // let state=(x)=>{
+
+  //   return x;
+  // }
+
+  // console.log(admins);
+    // let op=admins.toArray().find(admin=>admin?.email===user?.email)
+  
     return (
-        <div>
-
-
-
-          
+        <div>  
 <Box sx={{ flexGrow: 1  }}>
         <AppBar position="static">
           <Toolbar >
@@ -33,23 +39,15 @@ const Header = () => {
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <NavLink to="/explore" style={{color:'white',textDecoration:'none'}}>Explore</NavLink>
             </Typography>
+
             {
-            user?.email&&<NavLink to="/dashboard" style={{color:'white',textDecoration:'none'}}><Button color="inherit">Dashboard</Button> 
-               </NavLink>
-   
-  
+              user?.email&&<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              <NavLink to="/dashboard" style={{color:'white',textDecoration:'none'}}>Dashboard</NavLink>   </Typography>
+
             }
 
-           
-
             {
-              user?.email?
-              <Button onClick={logOut} color="inherit">logOut</Button> 
-              :
-               <NavLink to="/log" style={{color:'white',textDecoration:'none'}}><Button color="inherit">Login</Button> 
-               </NavLink>
-   
-  
+              user?.email?<Button onClick={logOut} color="inherit">logOut</Button>:<NavLink to="/log" style={{color:'white',textDecoration:'none'}}><Button color="inherit">Login</Button></NavLink>
             }
             
             

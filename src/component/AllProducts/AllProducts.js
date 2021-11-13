@@ -6,7 +6,8 @@ const AllProducts = (props) => {
     const {_id,url,title,description,price}=props.product;
 
     return (
-        <Card sx={{ maxWidth: 345 }}>
+      // sx={{ maxWidth: 345 }}
+        <Card sx={{height:1,p:1,m:1}} >
       <CardMedia
         component="img"
         alt=""
