@@ -36,7 +36,7 @@ const Purchase = () => {
     // console.log(id)
         const [purcaseCarDetail,setPurcaseCarDetail]=useState({});
         useEffect(()=>{
-            const url=`http://localhost:5000/singleCarDetail/${id}`
+            const url=`https://obscure-peak-03535.herokuapp.com/singleCarDetail/${id}`
             fetch(url)
             .then(res=>res.json())
             .then(data=>setPurcaseCarDetail(data))
@@ -64,7 +64,7 @@ const Purchase = () => {
           const handleLogInSubmit=e=>{
             // console.log(loginData);
 
-            fetch('http://localhost:5000/addOrders',{
+            fetch('https://obscure-peak-03535.herokuapp.com/addOrders',{
             method:'POST',
             headers:{
                 'content-type':'application/json'

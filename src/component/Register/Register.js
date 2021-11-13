@@ -40,7 +40,7 @@ const Register = () => {
      }
 
     
-     fetch('http://localhost:5000/users',{
+     fetch('https://obscure-peak-03535.herokuapp.com/users',{
       method:'POST',
       headers:{
           'content-type':'application/json'

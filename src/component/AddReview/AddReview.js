@@ -19,7 +19,7 @@ const AddReview = () => {
 
       const handleReviewSubmit=e=>{
          
-        fetch('http://localhost:5000/addReview',{
+        fetch('https://obscure-peak-03535.herokuapp.com/addReview',{
             method:'POST',
             headers:{
                 'content-type':'application/json'

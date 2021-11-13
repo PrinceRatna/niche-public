@@ -33,12 +33,12 @@ const Home = () => {
   const [carDetails,setCarDetails]=useState([]);
   const [reviews,setReviews]=useState([]);
   useEffect(()=>{
-      fetch('http://localhost:5000/explores')
+      fetch('https://obscure-peak-03535.herokuapp.com/explores')
       .then(res=>res.json())
       .then(data=>setCarDetails(data));
   },[]);
   useEffect(()=>{
-      fetch('http://localhost:5000/addReview')
+      fetch('https://obscure-peak-03535.herokuapp.com/addReview')
       .then(res=>res.json())
       .then(data=>setReviews(data));
   },[]);

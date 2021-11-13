@@ -7,7 +7,7 @@ import AllProducts from '../AllProducts/AllProducts';
 const Explore = () => {
     const [carDetails,setCarDetails]=useState([]);
     useEffect(()=>{
-        fetch('http://localhost:5000/explores')
+        fetch('https://obscure-peak-03535.herokuapp.com/explores')
         .then(res=>res.json())
         .then(data=>setCarDetails(data));
     },[]);

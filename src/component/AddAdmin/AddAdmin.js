@@ -7,20 +7,10 @@ const AddAdmin = () => {
 
     const [adminData,setAdminData]=useState({});
     // const {admins}=useAuth();
-    const {user,logOut,admin}=useAuth();
+    // const {user,logOut,admin}=useAuth();
 
 
-//     const [admins,setAdmins]=useState([]);
-//   useEffect(()=>{
-//       fetch('http://localhost:5000/addAdmin')
-//       .then(res=>res.json())
-//       .then(data=>setAdmins(data));
-//   },[]);
 
-    // console.log(admins[0]?.email, admins[0]?.password)
-    // admins.map((admin)=>{
-    //     console.log(admin.email);
-    // })
     
 
     const handleOnBlur=e=>{
@@ -41,7 +31,7 @@ const AddAdmin = () => {
         //   const user=adminData.email
 
 
-        fetch('http://localhost:5000/users',{
+        fetch('https://obscure-peak-03535.herokuapp.com/users',{
             method:'PUT',
             headers:{
                 'content-type':'application/json'
@@ -80,7 +70,7 @@ const AddAdmin = () => {
    
       /* const handleAdminSubmit=e=>{
 
-        fetch('http://localhost:5000/addAdmin',{
+        fetch('http:///addAdmin',{
             method:'POST',
             headers:{
                 'content-type':'application/json'

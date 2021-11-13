@@ -21,7 +21,7 @@ const AddProducts = () => {
 
       const handleProductSubmit=e=>{
          
-        fetch('http://localhost:5000/explores',{
+        fetch('https://obscure-peak-03535.herokuapp.com/explores',{
             method:'POST',
             headers:{
                 'content-type':'application/json'

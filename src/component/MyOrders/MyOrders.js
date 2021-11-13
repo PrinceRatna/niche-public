@@ -8,8 +8,8 @@ const MyOrders = () => {
     const [orders,setOrders]=useState([]);
     useEffect(()=>{
         // fetch(`https://polar-beach-07938.herokuapp.com/addOrders?email=${user.email}`)
-        fetch(`http://localhost:5000/addOrders?email=${user.email}`)
-        // http://localhost:5000/addOrders?email=arjnry125@gmail.com
+        fetch(`https://obscure-peak-03535.herokuapp.com/addOrders?email=${user.email}`)
+        
         .then(res=>res.json())
         .then(data=>setOrders(data));
     },[]);
@@ -18,7 +18,7 @@ const MyOrders = () => {
     const handleDeleteOder=id=>{
         const proceed=window.confirm('Are you sure, you want to delete?');
         if(proceed){
-           const url=`http://localhost:5000/addOrders/${id}`;
+           const url=`https://obscure-peak-03535.herokuapp.com/addOrders/${id}`;
            fetch(url,{
                method:'DELETE'
            })
