@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 
 const Header = () => {
-  const {user,logOut,admins,isLoading}=useAuth();
+  const {user,logOut,admin,isLoading}=useAuth();
   // const [state,setState]=useState(false);
   // const {admins}=useAuth();
   // let state=(x)=>{
@@ -41,7 +41,18 @@ const Header = () => {
             </Typography>
 
             {
-              user?.email&&<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+           admin&&<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            <NavLink to="/admin" style={{color:'white',textDecoration:'none'}}>Add Admin</NavLink>
+            </Typography>
+             }
+            {
+           admin&&<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            <NavLink to="/addProducts" style={{color:'white',textDecoration:'none'}}>Add Product</NavLink>
+            </Typography>
+             }
+
+            {
+              !admin&&<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               <NavLink to="/dashboard" style={{color:'white',textDecoration:'none'}}>Dashboard</NavLink>   </Typography>
 
             }

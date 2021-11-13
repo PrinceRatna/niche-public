@@ -7,7 +7,7 @@ const AddAdmin = () => {
 
     const [adminData,setAdminData]=useState({});
     // const {admins}=useAuth();
-    const {user,logOut,admins}=useAuth();
+    const {user,logOut,admin}=useAuth();
 
 
 //     const [admins,setAdmins]=useState([]);
@@ -33,8 +33,52 @@ const AddAdmin = () => {
    
    
       }
+
+
+
+
+      const handleAdminSubmit=e=>{
+        //   const user=adminData.email
+
+
+        fetch('http://localhost:5000/users',{
+            method:'PUT',
+            headers:{
+                'content-type':'application/json'
+            },
+            body:JSON.stringify(adminData)
+
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data)
+            if(data.modifiedCount){
+                alert('Successfully Added New Admin .')
+                e.target.reset(); 
+
+
+            }
+        })
+
+        
+         e.preventDefault();
+       }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
    
-       const handleAdminSubmit=e=>{
+      /* const handleAdminSubmit=e=>{
 
         fetch('http://localhost:5000/addAdmin',{
             method:'POST',
@@ -56,13 +100,12 @@ const AddAdmin = () => {
          e.preventDefault();
        }
 
-
+*/
     return (
         <div>
-          {
-              admins.map((admin)=>{
-           if(admin?.email===user?.email){
-            return <div style={{textAlign:'center',marginTop:'20px'}}>
+          
+
+        <div style={{textAlign:'center',marginTop:'20px'}}>
         <Container>
          <form onSubmit={handleAdminSubmit}>
           <TextField
@@ -98,17 +141,13 @@ const AddAdmin = () => {
           </Container>
               </div>
       
-              }
+ 
 
-               if(admin?.email!==user?.email){
-
-                return<div style={{textAlign:'center',marginTop:'20px'}}> <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                <NavLink to="/home"style={{color:'black',textDecoration:'none'}}>Go To Home Page !!</NavLink>
-                </Typography> </div>
-              }
+               
+              
             
-     })
-    }
+     
+    
       
         </div>
     );

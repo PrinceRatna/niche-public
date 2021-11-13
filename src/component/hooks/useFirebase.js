@@ -11,13 +11,8 @@ const useFirebase=()=>{
 const auth = getAuth();
 
 // ------------------admin-------------
-const [admins,setAdmins]=useState([]);
-  useEffect(()=>{
-      fetch('http://localhost:5000/addAdmin')
-      .then(res=>res.json())
-      .then(data=>setAdmins(data));
-  },[]);
-
+const [admin,setAdmin]=useState(false);
+  
 
 
 
@@ -107,6 +102,14 @@ useEffect(()=>{
 return ()=>unsubscribe;
 },[])
 
+///admin
+
+useEffect(()=>{
+  fetch(`http://localhost:5000/users/${user?.email}`)
+  .then(res=>res.json())
+  .then(data=>setAdmin(data.admin));
+},[user?.email]);
+
 
 
     // console.log(admins[0]?.email, admins[0]?.password)
@@ -118,7 +121,7 @@ return ()=>unsubscribe;
         loginUser,
         isLoading,
         error,
-        admins
+        admin
     }
 
 

@@ -38,6 +38,30 @@ const Register = () => {
        alert('Password did not match')
        return
      }
+
+    
+     fetch('http://localhost:5000/users',{
+      method:'POST',
+      headers:{
+          'content-type':'application/json'
+      },
+      body:JSON.stringify(loginData)
+
+  })
+  .then(res=>res.json())
+  .then(data=>{
+      if(data.insertedId){
+          // alert('Successfully Added User .')
+          e.target.reset(); 
+      }
+  })
+
+
+
+
+
+
+
      registerUser(loginData.email,loginData.password,loginData.name, history);
      e.preventDefault();
    }
